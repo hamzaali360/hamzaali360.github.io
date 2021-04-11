@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link href="https://unpkg.com/material-components-web@10.0.0/dist/material-components-web.min.css" rel="stylesheet">
+	<script src="https://unpkg.com/material-components-web@10.0.0/dist/material-components-web.min.js">
+
+	</script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<title>Page Title</title>
+	<style>
+		.template {
+			display: none;
+		}
+
+		.mdc-card {
+			width: 50%;
+			padding: 16px;
+      margin-left: auto;
+    margin-right: auto;
+		}
+	</style>
+</head>
+
+<body>
+
+	<center>
+		<h1>Hamza Ali</h1>
+	</center>
+	<!-- <p>This is a paragraph.</p> -->
+	<div class="mdc-card template" style = "center">
+		<div class="mdc-card__media mdc-card__media--16-9" >
+		</div>
+		<div class="mdc-card-wrapper__text-section">
+			<div class="demo-card__title">Card title</div>
+			<div class="demo-card__subhead">Secondary text</div>
+
+		</div>
+		<div class="mdc-card-wrapper__text-section">
+			<div class="demo-card__supporting-text">
+				Greyhound divisively hello coldly wonderfully marginally far upon excluding.
+			</div>
+		</div>
+		<div class="mdc-card__actions">
+			<div class="mdc-card__action-buttons">
+				<button class="mdc-button mdc-card__action mdc-card__action--button">
+        <div class="mdc-button__ripple"></div>
+        <span class="mdc-button__label">Action 1</span>
+      </button>
+      <button class="mdc-button mdc-card__action mdc-card__action--button">
+        <div class="mdc-button__ripple"></div>
+        <span class="mdc-button__label">Action 2</span>
+      </button>
+    </div>
+  </div>
+    </div>
+  
+
+    <script>
+
+    let projects = [
+        {"name": "Project 1",
+         "discription" : "This project searches information about the building in the Chicago area.",
+        "tech": "HTML,CSS,JS",
+        "url_to_page": "https://hamzaali360.github.io/IT202-Spring2021-project1/index.html",
+        "url_to_repo": "https://github.com/hamzaali360/IT202-Spring2021-project1",
+        "image": "url('images/Project1.png')",
+        "display": "true"},
+        
+         {"name": "Project 2",
+          "discription" : "This project is a 2d scrolling game which you are a rocket flying in space and you need to avoid asteroids along the way",
+        "tech": "HTML,CSS,JS",
+        "url_to_page": "https://hamzaali360.github.io/IT202-Spring2021-project2/",
+        "url_to_repo": "https://github.com/hamzaali360/IT202-Spring2021-project2",
+        "image": "url('images/Project2.png')",
+        "display": "true"}
+    ];
+    </script>
+    
+    <script>
+    projects.forEach( (project) => {
+        
+        let clone = document.querySelector(".template").cloneNode(true);
+        console.log(clone);
+        clone.querySelector(".mdc-card__media.mdc-card__media--16-9").style.backgroundImage = project.image;
+        clone.querySelector(".demo-card__title").innerText = project.name;
+        clone.querySelector(".demo-card__subhead").innerText = project.tech;
+        clone.querySelector(".demo-card__supporting-text").innerText = project.discription;
+        clone.querySelectorAll(".mdc-button__label")[0].innerText = "View Page";
+        clone.querySelectorAll(".mdc-button__label")[0].setAttribute("href", project.url_to_page);
+        clone.querySelectorAll(".mdc-button__label")[1].innerText = "View Repo";
+        clone.querySelectorAll(".mdc-button__label")[1].setAttribute("href", project.url_to_repo);
+        
+        clone.classList.remove("template");
+        document.body.append(clone);
+        clone.querySelectorAll(".mdc-card__action--button")[0].addEventListener("click", (event) => { 
+             console.log("words");
+           let url = clone.querySelectorAll(".mdc-button__label")[0].getAttribute("href");
+           window.open(url)
+           }); 
+
+        clone.querySelectorAll(".mdc-card__action--button")[1].addEventListener("click", (event) => { 
+             console.log("words");
+           let url = clone.querySelectorAll(".mdc-button__label")[1].getAttribute("href");
+             window.open(url)
+           }); 
+    })
+    </script>
+</body>
+</html>
